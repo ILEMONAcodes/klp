@@ -92,7 +92,7 @@ export default function FeaturedProperties() {
     <section className="bg-[#FBF9F5] py-12 sm:py-20 px-4 sm:px-6 lg:px-12 overflow-hidden">
       <div className="max-w-7xl mx-auto space-y-8 sm:space-y-12">
         
-        {/* HEADER SECTION - COMPACT MOBILE TYPOGRAPHY */}
+        {/* HEADER SECTION */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6">
           <div className="max-w-2xl">
             <span className="text-[#F2B512] font-semibold text-xs sm:text-base block mb-1 sm:mb-2 tracking-wide uppercase">
@@ -166,12 +166,12 @@ export default function FeaturedProperties() {
                     </p>
                   </div>
 
-                  {/* PURPLE OVERLAY - HOVER & TOUCH/CLICK SLIDE UP */}
-                  <div className={`absolute inset-0 bg-purple-900/95 text-white p-5 sm:p-8 z-20 flex flex-col justify-between backdrop-blur-sm transition-transform duration-500 ease-in-out ${
+                  {/* SEMI-TRANSPARENT PURPLE OVERLAY - SEE-THROUGH GLASS EFFECT */}
+                  <div className={`absolute inset-0 bg-purple-950/80 text-white p-5 sm:p-8 z-20 flex flex-col justify-between backdrop-blur-md transition-transform duration-500 ease-in-out ${
                     isCardActive ? "translate-y-0" : "translate-y-full group-hover:translate-y-0"
                   }`}>
                     <div className="space-y-2 sm:space-y-4 pt-4 sm:pt-10">
-                      <h3 className="text-xl sm:text-3xl font-bold tracking-tight leading-snug">
+                      <h3 className="text-xl sm:text-3xl font-bold tracking-tight leading-snug drop-shadow-sm">
                         {project.title}
                       </h3>
 
@@ -188,11 +188,11 @@ export default function FeaturedProperties() {
                       </p>
                     </div>
 
-                    <div className="flex items-center justify-between pt-4 sm:pt-6 border-t border-purple-700/50">
+                    <div className="flex items-center justify-between pt-4 sm:pt-6 border-t border-purple-400/30">
                       <Link
                         href={project.link}
                         onClick={(e) => e.stopPropagation()}
-                        className="inline-flex items-center gap-2 px-5 py-2.5 sm:px-6 sm:py-3 bg-white text-purple-950 font-bold rounded-full text-[11px] sm:text-xs uppercase tracking-wider hover:bg-purple-100 transition-colors"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 sm:px-6 sm:py-3 bg-white text-purple-950 font-bold rounded-full text-[11px] sm:text-xs uppercase tracking-wider hover:bg-purple-100 transition-colors shadow-md"
                       >
                         View Details
                         <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
@@ -208,7 +208,7 @@ export default function FeaturedProperties() {
           </div>
         </div>
 
-        {/* BOTTOM ACTION BUTTON (MOVED HIGHER) */}
+        {/* BOTTOM ACTION BUTTON */}
         <div className="flex justify-center -mt-2 sm:pt-2">
           <Link
             href="/properties"
