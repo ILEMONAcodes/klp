@@ -10,23 +10,24 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-slate-950 text-white overflow-x-hidden">
+    <main className="min-h-screen bg-white text-slate-950 overflow-x-hidden">
       <Navbar />
 
-      {/* HERO SECTION */}
-      <section className="relative w-full min-h-[85vh] sm:min-h-screen flex items-center justify-center pt-24 pb-12 px-4 sm:px-6 overflow-hidden bg-slate-950">
-        {/* Background Video / Overlay */}
+      {/* HERO SECTION - CLAMPED HEIGHT & ARCS */}
+      <section className="relative w-full h-[65vh] sm:h-[75vh] md:h-screen flex items-center justify-center pt-24 pb-20 px-4 sm:px-6 overflow-hidden bg-slate-950 [clip-path:ellipse(150%_100%_at_50%_0%)] md:[clip-path:none]">
+        {/* Background Video / Lightened Overlay */}
         <div className="absolute inset-0 z-0">
           <video
             autoPlay
             loop
             muted
             playsInline
-            className="w-full h-full object-cover opacity-40"
+            className="w-full h-full object-cover opacity-60" // Increased video opacity
           >
             <source src="/hero-video.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/70 via-slate-950/50 to-slate-950" />
+          {/* Lightened Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/50 via-slate-950/30 to-slate-950/80" />
         </div>
 
         {/* Hero Content Box */}
@@ -38,14 +39,13 @@ export default function Home() {
           </h1>
 
           {/* Subtitle Paragraph */}
-          <p className="mt-4 text-xs sm:text-base md:text-lg text-slate-300 max-w-xl leading-relaxed px-2 sm:px-0">
+          <p className="mt-4 text-xs sm:text-base md:text-lg text-slate-200 max-w-xl leading-relaxed px-2 sm:px-0">
             From luxury estates to accessible homes—discover exceptional properties
             and real estate services with Nigeria's most trusted agency.
           </p>
 
           {/* Action Buttons */}
           <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto px-4 sm:px-0">
-            {/* Explore Estates Button with Touch Feedback */}
             <motion.a
               href="#properties"
               whileTap={{ scale: 0.96 }}
@@ -53,8 +53,6 @@ export default function Home() {
             >
               Explore Estates
             </motion.a>
-
-            {/* Book Site Visit Button */}
             <motion.a
               href="#contact"
               whileTap={{ scale: 0.96 }}
@@ -66,9 +64,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Rest of your sections */}
+      {/* Other Sections */}
       <FeaturedProperties />
-      <AboutSection />
+
+      {/* CLAMPED SECOND VIDEO/IMAGE SECTION HEIGHT */}
+      <AboutSection /> 
+
       <Footer />
     </main>
   );

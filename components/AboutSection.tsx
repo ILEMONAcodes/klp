@@ -48,21 +48,21 @@ const stats = [
 
 export default function AboutSection() {
   return (
-    <section className="relative bg-[#fbf9f5] text-stone-900 py-16 px-4 sm:px-6 lg:px-12 overflow-hidden">
+    <section className="relative bg-[#fbf9f5] text-stone-900 py-10 sm:py-16 px-4 sm:px-6 lg:px-12 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         
         {/* MAIN 2-COLUMN LAYOUT */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
           
-          {/* LEFT COLUMN: TALL FEATURED VIDEO BOX */}
+          {/* LEFT COLUMN: COMPACT MOBILE HEIGHT VIDEO BOX */}
           <motion.div
             initial={{ opacity: 0, scale: 0.96, y: 40 }}
             whileInView={{ opacity: 1, scale: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.9, ease: [0.215, 0.61, 0.355, 1] }}
-            className="lg:col-span-5 h-full min-h-[480px] lg:min-h-[620px] relative"
+            className="lg:col-span-5 w-full h-[260px] sm:h-[360px] lg:h-full lg:min-h-[620px] relative"
           >
-            <div className="relative w-full h-full rounded-tr-[100px] rounded-bl-[30px] rounded-tl-[16px] rounded-br-[16px] overflow-hidden shadow-xl">
+            <div className="relative w-full h-full rounded-tr-[60px] sm:rounded-tr-[100px] rounded-bl-[20px] sm:rounded-bl-[30px] rounded-tl-[16px] rounded-br-[16px] overflow-hidden shadow-xl">
               <video
                 autoPlay
                 loop
@@ -76,7 +76,7 @@ export default function AboutSection() {
             </div>
           </motion.div>
 
-          {/* RIGHT COLUMN: SMALLER HEADERS, TEXT, STATS & BUTTONS */}
+          {/* RIGHT COLUMN: HEADERS, TEXT, STATS & BUTTONS */}
           <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
             
             {/* Headers & Narrative */}
@@ -87,24 +87,21 @@ export default function AboutSection() {
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.7 }}
               >
-                {/* SMALLER SUB-LABEL (text-sm/md instead of text-xl) */}
-                <span className="text-amber-500 font-bold text-sm sm:text-base block mb-1">
+                <span className="text-amber-500 font-bold text-xs sm:text-base block mb-1">
                   About Us
                 </span>
 
-                {/* SMALLER COMPACT TITLE (text-2xl/4xl instead of text-5xl) */}
-                <h2 className="text-2xl sm:text-4xl font-extrabold leading-snug text-stone-900 tracking-tight">
+                <h2 className="text-xl sm:text-4xl font-extrabold leading-snug text-stone-900 tracking-tight">
                   We are Building the Future of Nigeria's Real Estate
                 </h2>
               </motion.div>
 
-              {/* SMALLER BODY TEXT (text-sm/base instead of text-lg) */}
               <motion.p
                 initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.7, delay: 0.1 }}
-                className="text-stone-700 text-sm sm:text-base font-normal leading-relaxed"
+                className="text-stone-700 text-xs sm:text-base font-normal leading-relaxed"
               >
                 At Kayceelaw Properties, we bridge the gap between aspirational
                 living and real estate investments. Based in Abuja, we specialize
@@ -118,7 +115,7 @@ export default function AboutSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.7, delay: 0.2 }}
-                className="text-stone-700 text-sm sm:text-base font-normal leading-relaxed"
+                className="text-stone-700 text-xs sm:text-base font-normal leading-relaxed"
               >
                 Whether you are looking to build your dream home or expand an
                 investment portfolio, our focus is on structural integrity, prime
@@ -127,7 +124,7 @@ export default function AboutSection() {
               </motion.p>
             </div>
 
-            {/* 2x2 Icon Stats Grid (Smaller numbers and icons) */}
+            {/* 2x2 Icon Stats Grid */}
             <div className="grid grid-cols-2 gap-4 sm:gap-6 pt-4 border-t border-stone-300/60">
               {stats.map((stat, index) => (
                 <motion.div
@@ -136,20 +133,20 @@ export default function AboutSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-40px" }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="flex items-start space-x-3"
+                  className="flex items-start space-x-2.5 sm:space-x-3"
                 >
-                  <div className="p-2.5 bg-amber-500/10 rounded-xl shrink-0">
+                  <div className="p-2 sm:p-2.5 bg-amber-500/10 rounded-xl shrink-0">
                     {stat.icon}
                   </div>
                   <div>
-                    <div className="text-2xl sm:text-3xl font-extrabold text-amber-500 tracking-tight">
+                    <div className="text-xl sm:text-3xl font-extrabold text-amber-500 tracking-tight">
                       <AnimatedCounter
                         value={stat.value}
                         suffix={stat.suffix}
                         duration={3200}
                       />
                     </div>
-                    <div className="text-stone-700 text-xs font-semibold mt-0.5">
+                    <div className="text-stone-700 text-[11px] sm:text-xs font-semibold mt-0.5">
                       {stat.label}
                     </div>
                   </div>
@@ -166,27 +163,33 @@ export default function AboutSection() {
               className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-stone-300/60"
             >
               <div>
-                <h4 className="font-bold text-stone-900 text-base mb-0.5">
+                <h4 className="font-bold text-stone-900 text-sm sm:text-base mb-0.5">
                   Talk To Us
                 </h4>
                 <p className="text-stone-600 text-xs mb-3">
                   Get started with Kayceelaw by speaking to one of our experts.
                 </p>
-                <button className="px-6 py-2.5 bg-amber-500 hover:bg-amber-600 text-stone-950 font-bold rounded-full transition-all duration-300 text-xs shadow-sm">
+                <motion.button
+                  whileTap={{ scale: 0.95 }}
+                  className="w-full sm:w-auto px-6 py-2.5 bg-amber-500 hover:bg-amber-600 active:bg-amber-700 text-stone-950 font-bold rounded-full transition-all duration-200 text-xs shadow-sm"
+                >
                   Let's Talk
-                </button>
+                </motion.button>
               </div>
 
               <div>
-                <h4 className="font-bold text-stone-900 text-base mb-0.5">
+                <h4 className="font-bold text-stone-900 text-sm sm:text-base mb-0.5">
                   Project Catalog
                 </h4>
                 <p className="text-stone-600 text-xs mb-3">
                   Explore our portfolio through our collection of estate guides.
                 </p>
-                <button className="px-6 py-2.5 bg-stone-900 hover:bg-stone-800 text-white font-bold rounded-full transition-all duration-300 text-xs shadow-sm">
+                <motion.button
+                  whileTap={{ scale: 0.95 }}
+                  className="w-full sm:w-auto px-6 py-2.5 bg-stone-900 hover:bg-stone-800 active:bg-stone-950 text-white font-bold rounded-full transition-all duration-200 text-xs shadow-sm"
+                >
                   View Catalog
-                </button>
+                </motion.button>
               </div>
             </motion.div>
 
