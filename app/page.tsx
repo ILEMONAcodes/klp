@@ -13,8 +13,11 @@ export default function Home() {
     <main className="min-h-screen bg-white text-slate-950 overflow-x-hidden">
       <Navbar />
 
-      {/* HERO SECTION - CLAMPED HEIGHT & ARCS */}
-      <section className="relative w-full h-[65vh] sm:h-[75vh] md:h-screen flex items-center justify-center pt-24 pb-20 px-4 sm:px-6 overflow-hidden bg-slate-950 [clip-path:ellipse(150%_100%_at_50%_0%)] md:[clip-path:none]">
+      {/* HERO SECTION - GUARANTEED ARC CURVE FOR ALL SCREENS */}
+      <section 
+        className="relative w-full h-[65vh] sm:h-[75vh] md:h-screen flex items-center justify-center pt-24 pb-20 px-4 sm:px-6 overflow-hidden bg-slate-950"
+        style={{ clipPath: "ellipse(130% 100% at 50% 0%)" }}
+      >
         {/* Background Video / Lightened Overlay */}
         <div className="absolute inset-0 z-0">
           <video
@@ -22,7 +25,7 @@ export default function Home() {
             loop
             muted
             playsInline
-            className="w-full h-full object-cover opacity-60" // Increased video opacity
+            className="w-full h-full object-cover opacity-60"
           >
             <source src="/hero-video.mp4" type="video/mp4" />
           </video>
@@ -32,7 +35,7 @@ export default function Home() {
 
         {/* Hero Content Box */}
         <div className="relative z-10 max-w-3xl mx-auto text-center flex flex-col items-center">
-          {/* Main Title - Proportional Mobile Font Size */}
+          {/* Main Title */}
           <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white leading-tight sm:leading-none">
             Kayceelaw <br className="sm:hidden" />
             <span className="text-white">Properties</span>
@@ -67,7 +70,6 @@ export default function Home() {
       {/* Other Sections */}
       <FeaturedProperties />
 
-      {/* CLAMPED SECOND VIDEO/IMAGE SECTION HEIGHT */}
       <AboutSection /> 
 
       <Footer />

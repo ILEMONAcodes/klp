@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -20,13 +19,10 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
         {/* Brand Logo */}
         <Link href="/" className="flex items-center gap-2">
-          <Image
-            src="/public/logo-transparent.png" // Verify your logo path
+          <img
+            src="/logo-transparent.png"
             alt="Kayceelaw Properties"
-            width={140}
-            height={40}
-            className="w-28 sm:w-36 h-auto object-contain"
-            priority
+            className="w-28 sm:w-36 h-auto object-contain max-h-12"
           />
         </Link>
 
@@ -43,7 +39,7 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Mobile Hamburger Button (3 lines) */}
+        {/* Mobile Hamburger Button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="md:hidden p-2 text-gray-200 hover:text-white focus:outline-none"

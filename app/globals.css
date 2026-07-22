@@ -5,3 +5,8 @@
   --font-sans: var(--font-jakarta), sans-serif;
   --color-gold: #F2B512;
 }
+
+/* Custom Hero Arc Curve */
+.hero-curve {
+  clip-path: ellipse(140% 100% at 50% 0%);
+}
