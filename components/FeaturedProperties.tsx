@@ -118,7 +118,7 @@ export default function FeaturedProperties() {
             {extendedProjects.map((project, index) => (
               <div
                 key={`${project.id}-${index}`}
-                className="min-w-[85vw] sm:min-w-[380px] lg:min-w-[420px] h-[520px] relative rounded-3xl overflow-hidden shrink-0 shadow-lg select-none group cursor-pointer"
+                className="min-w-[85vw] sm:min-w-[380px] lg:min-w-[420px] h-[320px] sm:h-[380px] lg:h-[440px] relative rounded-3xl overflow-hidden shrink-0 shadow-lg select-none group cursor-pointer"
               >
                 {/* Property Image */}
                 <img
