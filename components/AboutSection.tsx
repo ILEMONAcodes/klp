@@ -48,7 +48,7 @@ const stats = [
 
 export default function AboutSection() {
   return (
-    <section className="relative bg-[#fbf9f5] text-stone-900 py-10 sm:py-16 px-4 sm:px-6 lg:px-12 overflow-hidden">
+    <section id="about" className="relative bg-[#fbf9f5] text-stone-900 py-10 sm:py-16 px-4 sm:px-6 lg:px-12 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         
         {/* MAIN 2-COLUMN LAYOUT */}
@@ -76,7 +76,7 @@ export default function AboutSection() {
             </div>
           </motion.div>
 
-          {/* RIGHT COLUMN: HEADERS, TEXT, STATS & BUTTONS */}
+          {/* RIGHT COLUMN: HEADERS, TEXT, STATS & CATALOG CTA */}
           <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
             
             {/* Headers & Narrative */}
@@ -154,43 +154,28 @@ export default function AboutSection() {
               ))}
             </div>
 
-            {/* Action Buttons Row */}
+            {/* Project Catalog Section Only */}
             <motion.div
               initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.3 }}
-              className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-stone-300/60"
+              className="pt-4 border-t border-stone-300/60 flex flex-col items-center text-center sm:items-start sm:text-left"
             >
-              <div>
-                <h4 className="font-bold text-stone-900 text-sm sm:text-base mb-0.5">
-                  Talk To Us
-                </h4>
-                <p className="text-stone-600 text-xs mb-3">
-                  Get started with Kayceelaw by speaking to one of our experts.
-                </p>
-                <motion.button
-                  whileTap={{ scale: 0.95 }}
-                  className="w-full sm:w-auto px-6 py-2.5 bg-amber-500 hover:bg-amber-600 active:bg-amber-700 text-stone-950 font-bold rounded-full transition-all duration-200 text-xs shadow-sm"
-                >
-                  Let's Talk
-                </motion.button>
-              </div>
-
-              <div>
-                <h4 className="font-bold text-stone-900 text-sm sm:text-base mb-0.5">
-                  Project Catalog
-                </h4>
-                <p className="text-stone-600 text-xs mb-3">
-                  Explore our portfolio through our collection of estate guides.
-                </p>
-                <motion.button
-                  whileTap={{ scale: 0.95 }}
-                  className="w-full sm:w-auto px-6 py-2.5 bg-stone-900 hover:bg-stone-800 active:bg-stone-950 text-white font-bold rounded-full transition-all duration-200 text-xs shadow-sm"
-                >
-                  View Catalog
-                </motion.button>
-              </div>
+              <h4 className="font-bold text-stone-900 text-sm sm:text-base mb-1">
+                Project Catalog
+              </h4>
+              <p className="text-stone-600 text-xs mb-3 max-w-sm">
+                Explore our portfolio through our collection of estate guides.
+              </p>
+              <motion.a
+                href="/catalog.pdf" // Update to your catalog file path or link
+                target="_blank"
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center justify-center px-6 py-2.5 bg-stone-900 hover:bg-stone-800 active:bg-stone-950 text-white font-semibold rounded-full transition-all duration-200 text-xs shadow-sm"
+              >
+                View Catalog
+              </motion.a>
             </motion.div>
 
           </div>
