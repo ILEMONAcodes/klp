@@ -8,7 +8,7 @@ import FeaturedProperties from "@/components/FeaturedProperties";
 import AboutSection from "@/components/AboutSection";
 import Footer from "@/components/Footer";
 
-// Create an animated Link component using Framer Motion
+// Create an animate d Link component using Framer Motion
 const MotionLink = motion.create(Link);
 
 export default function Home() {

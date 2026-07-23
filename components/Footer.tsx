@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion, Variants } from "framer-motion";
+import { Lock } from "lucide-react";
 
 // Explicitly typed Variants to resolve TypeScript string errors
 const containerVariants: Variants = {
@@ -217,13 +218,25 @@ export default function Footer() {
 
         </div>
 
-        {/* BOTTOM COPYRIGHT BAR */}
+        {/* BOTTOM COPYRIGHT BAR WITH STAFF LOGIN */}
         <motion.div
           variants={itemVariants}
           className="mt-16 pt-6 border-t border-purple-500/20 flex flex-col sm:flex-row justify-between items-center text-xs text-purple-300/80 font-medium gap-4"
         >
           <p>© {new Date().getFullYear()} Kayceelaw Properties. All rights reserved.</p>
-          <p>Built with excellence for modern real estate.</p>
+
+          <div className="flex items-center gap-6">
+            <p className="hidden md:block">Built with excellence for modern real estate.</p>
+            
+            {/* DISCREET STAFF LOGIN LINK */}
+            <Link
+              href="/admin"
+              className="flex items-center gap-1.5 text-purple-300/60 hover:text-purple-300 transition-colors group"
+            >
+              <Lock className="w-3 h-3 text-purple-300/60 group-hover:text-purple-300 transition-colors" />
+              <span>Staff Login</span>
+            </Link>
+          </div>
         </motion.div>
       </motion.div>
     </footer>

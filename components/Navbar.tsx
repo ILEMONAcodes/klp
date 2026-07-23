@@ -133,7 +133,7 @@ export default function Navbar() {
             })}
           </div>
 
-          <div className="pt-2 border-t border-stone-200/60">
+          <div className="pt-3 border-t border-stone-200/60 space-y-2">
             <Link
               href="/contact"
               onClick={() => setIsMobileMenuOpen(false)}
