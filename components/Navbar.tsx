@@ -1,98 +1,150 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { Menu, X, Phone } from "lucide-react";
+
+const NAV_LINKS = [
+  { name: "Home", href: "/" },
+  { name: "Properties", href: "/properties" },
+  { name: "About Us", href: "/about" },
+  { name: "Contact", href: "/contact" },
+];
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
-  const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "Properties", href: "/properties" }, // Updated to redirect to the new properties page
-    { name: "About Us", href: "/#about" }, // Points to homepage about section from any page
-    { name: "Contact", href: "/#contact" },
-  ];
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[#0F172A]/90 backdrop-blur-md border-b border-white/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
-        {/* Brand Logo */}
-        <Link href="/" className="flex items-center gap-2">
-          <img
-            src="/logo-transparent.png"
-            alt="Kayceelaw Properties"
-            className="w-28 sm:w-36 h-auto object-contain max-h-12"
-          />
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? "bg-[#FBF9F5]/90 backdrop-blur-md shadow-sm py-3 border-b border-stone-200/60"
+          : "bg-[#FBF9F5] py-4"
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 flex items-center justify-between">
+        {/* LOGO */}
+        <Link href="/" className="flex items-center gap-2.5 group">
+          <div className="relative w-9 h-9 shrink-0 overflow-hidden rounded-xl group-hover:scale-105 transition-transform">
+            <Image
+              src="/logo-transparent.png"
+              alt="Kayceelaw Properties Logo"
+              width={36}
+              height={36}
+              className="w-full h-full object-contain"
+              priority
+            />
+          </div>
+          <div className="flex flex-col">
+            <span className="font-extrabold text-base leading-tight tracking-tight text-stone-900">
+              KAYCEELAW
+            </span>
+            <span className="text-[10px] uppercase tracking-widest font-bold text-amber-700 -mt-0.5">
+              Properties
+            </span>
+          </div>
         </Link>
 
-        {/* Desktop Navigation Links */}
+        {/* DESKTOP NAVIGATION LINKS */}
         <nav className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className="text-sm font-medium text-gray-200 hover:text-amber-400 transition-colors"
-            >
-              {link.name}
-            </Link>
-          ))}
-        </nav>
-
-        {/* Mobile Hamburger Button */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden p-2 text-gray-200 hover:text-white focus:outline-none"
-          aria-label="Toggle Menu"
-        >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            {isOpen ? (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            ) : (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            )}
-          </svg>
-        </button>
-      </div>
-
-      {/* Mobile Menu Dropdown Overlay */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden bg-[#0F172A] border-b border-white/10 px-4 pt-2 pb-6 space-y-4"
-          >
-            {navLinks.map((link) => (
+          {NAV_LINKS.map((link) => {
+            const isActive = pathname === link.href;
+            return (
               <Link
                 key={link.name}
                 href={link.href}
-                onClick={() => setIsOpen(false)}
-                className="block text-base font-medium text-gray-200 hover:text-amber-400 py-2 border-b border-white/5"
+                className={`text-xs uppercase tracking-wider font-bold transition-colors relative py-1 ${
+                  isActive
+                    ? "text-purple-950"
+                    : "text-stone-600 hover:text-purple-950"
+                }`}
               >
                 {link.name}
+                {isActive && (
+                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#F2B512] rounded-full" />
+                )}
               </Link>
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
+            );
+          })}
+        </nav>
+
+        {/* DESKTOP CTA BUTTON */}
+        <div className="hidden md:flex items-center gap-3">
+          <Link
+            href="/contact"
+            className="flex items-center gap-2 px-5 py-2.5 bg-purple-950 hover:bg-purple-900 text-white font-bold text-xs rounded-full transition-all shadow-sm hover:shadow-md"
+          >
+            <Phone className="w-3.5 h-3.5 text-[#F2B512]" />
+            Get in Touch
+          </Link>
+        </div>
+
+        {/* MOBILE MENU TOGGLE BUTTON */}
+        <button
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="md:hidden p-2 rounded-xl bg-stone-100 text-stone-800 hover:bg-stone-200 transition-colors"
+          aria-label="Toggle Navigation Menu"
+        >
+          {isMobileMenuOpen ? (
+            <X className="w-6 h-6" />
+          ) : (
+            <Menu className="w-6 h-6" />
+          )}
+        </button>
+      </div>
+
+      {/* MOBILE NAVIGATION DRAWER */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden bg-[#FBF9F5] border-b border-stone-200/80 px-4 pt-4 pb-6 space-y-4 shadow-xl">
+          <div className="flex flex-col space-y-3">
+            {NAV_LINKS.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={`px-4 py-2.5 rounded-xl text-xs uppercase tracking-wider font-bold transition-colors ${
+                    isActive
+                      ? "bg-purple-950 text-white"
+                      : "text-stone-700 hover:bg-stone-100"
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
+          </div>
+
+          <div className="pt-2 border-t border-stone-200/60">
+            <Link
+              href="/contact"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="flex items-center justify-center gap-2 w-full py-3 bg-[#F2B512] text-purple-950 font-bold text-xs rounded-xl shadow-sm"
+            >
+              <Phone className="w-4 h-4" />
+              Contact Us Now
+            </Link>
+          </div>
+        </div>
+      )}
     </header>
   );
 }
