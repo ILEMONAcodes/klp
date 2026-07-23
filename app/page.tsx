@@ -8,6 +8,9 @@ import FeaturedProperties from "@/components/FeaturedProperties";
 import AboutSection from "@/components/AboutSection";
 import Footer from "@/components/Footer";
 
+// Create an animated Link component using Framer Motion
+const MotionLink = motion.create(Link);
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-white text-slate-950 overflow-x-hidden">
@@ -49,13 +52,13 @@ export default function Home() {
 
           {/* Action Buttons */}
           <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto px-4 sm:px-0">
-            <motion.a
-              href="#properties"
+            <MotionLink
+              href="/properties"
               whileTap={{ scale: 0.96 }}
               className="w-full sm:w-auto px-6 py-3 rounded-full bg-amber-500 hover:bg-amber-400 active:bg-amber-600 text-slate-950 font-semibold text-sm transition-all duration-200 shadow-lg shadow-amber-500/20 text-center"
             >
               Explore Estates
-            </motion.a>
+            </MotionLink>
             <motion.a
               href="#contact"
               whileTap={{ scale: 0.96 }}

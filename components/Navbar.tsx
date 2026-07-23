@@ -9,9 +9,9 @@ export default function Navbar() {
 
   const navLinks = [
     { name: "Home", href: "/" },
-    { name: "Properties", href: "#properties" },
-    { name: "About Us", href: "#about" },
-    { name: "Contact", href: "#contact" },
+    { name: "Properties", href: "/properties" }, // Updated to redirect to the new properties page
+    { name: "About Us", href: "/#about" }, // Points to homepage about section from any page
+    { name: "Contact", href: "/#contact" },
   ];
 
   return (

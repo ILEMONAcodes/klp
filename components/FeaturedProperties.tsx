@@ -12,7 +12,7 @@ const projects = [
       "Redefining modern living in Abuja, Ajuba Smart City sets the benchmark. Spanning across prime acreage, the estate features luxury smart homes equipped with state-of-the-art automation and sustainable architecture.",
     image:
       "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop",
-    link: "/properties/ajuba-smart-city",
+    link: "/properties",
     tag: "Featured Development",
   },
   {
@@ -23,7 +23,7 @@ const projects = [
       "Exclusive high-rise luxury apartments offering panoramic city views, private elevators, sky lounges, and uncompromised privacy in the heart of Maitama.",
     image:
       "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1200&auto=format&fit=crop",
-    link: "/properties/nouveau-heights",
+    link: "/properties",
     tag: "Luxury Apartments",
   },
   {
@@ -34,7 +34,7 @@ const projects = [
       "A serene collection of automated smart villas designed for modern family comfort, eco-friendly energy integration, and maximum security.",
     image:
       "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1200&auto=format&fit=crop",
-    link: "/properties/kayceelaw-residence",
+    link: "/properties",
     tag: "Smart Villas",
   },
   {
@@ -45,7 +45,7 @@ const projects = [
       "Master-planned gated community offering prime residential plots, manicured parks, recreational clubhouses, and bespoke infrastructure.",
     image:
       "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?q=80&w=1200&auto=format&fit=crop",
-    link: "/properties/grand-horizon",
+    link: "/properties",
     tag: "Gated Community",
   },
 ];
