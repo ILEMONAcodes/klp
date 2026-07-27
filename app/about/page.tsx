@@ -1,86 +1,57 @@
-"use client";
-
-import { useEffect, useState, useRef } from "react";
-import { motion, useInView } from "framer-motion";
 import Link from "next/link";
 import { Trophy, Award, ShieldCheck, Cpu, Leaf, Medal } from "lucide-react";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import { prisma } from "@/lib/prisma";
+import ExecutiveGrid from "./ExecutiveGrid"; // Client wrapper for animated team section
 
-// ANIMATED COUNTER COMPONENT
-function AnimatedCounter({ value, suffix = "" }: { value: number; suffix?: string }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true });
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    if (isInView) {
-      let start = 0;
-      const duration = 2000; // 2 seconds counting animation
-      const increment = value / (duration / 16);
-
-      const timer = setInterval(() => {
-        start += increment;
-        if (start >= value) {
-          setCount(value);
-          clearInterval(timer);
-        } else {
-          setCount(Math.floor(start));
-        }
-      }, 16);
-
-      return () => clearInterval(timer);
-    }
-  }, [isInView, value]);
-
-  return (
-    <span ref={ref}>
-      {count.toLocaleString()}
-      {suffix}
-    </span>
-  );
-}
-
-const TEAM_MEMBERS = [
+// FALLBACK LIST IN CASE DATABASE HAS NO RECORDS YET
+const STATIC_TEAM_MEMBERS = [
   {
+    id: "1",
     name: "Emmanuel Kelechukwu Chris Esq.",
-    title: "Managing Director / CEO",
+    role: "Managing Director / CEO",
     image: "/team-emmanuel.jpg",
     bio: "Legal practitioner and visionary real estate strategist with over a decade of experience in high-yield property acquisition and urban development across Nigeria.",
   },
   {
+    id: "2",
     name: "Odebala Winifred",
-    title: "Chief Legal Officer",
+    role: "Chief Legal Officer",
     image: "/team-winifred.jpg",
     bio: "Ensuring seamless perfection in property title verification, documentation, and regulatory compliance for every client investment.",
   },
   {
+    id: "3",
     name: "Sunday Goodness",
-    title: "Chief Operating Officer",
+    role: "Chief Operating Officer",
     image: "/team-goodness.jpg",
     bio: "Directing operational efficiency, estate infrastructure management, and project execution standards across all developments.",
   },
   {
+    id: "4",
     name: "Ebiloma Uchubiyojo Fortress",
-    title: "Acting Head of Sales",
+    role: "Acting Head of Sales",
     image: "/team-fortress.jpg",
     bio: "Spearheading client acquisition strategies, real estate portfolio management, and market expansion initiatives.",
   },
   {
+    id: "5",
     name: "Rachel Ogbeha",
-    title: "Head of Client Relations",
+    role: "Head of Client Relations",
     image: "/team-rachel.jpg",
     bio: "Dedicated to providing exceptional client onboarding, private tour coordination, and post-purchase advisory support.",
   },
   {
+    id: "6",
     name: "Joseph Sabastine",
-    title: "Senior Project Architect",
+    role: "Senior Project Architect",
     image: "/team-joseph.jpg",
     bio: "Translating contemporary smart-city concepts into sustainable, luxurious residential reality.",
   },
   {
+    id: "7",
     name: "Abiola Nathaniel",
-    title: "Lead Infrastructure Engineer",
+    role: "Lead Infrastructure Engineer",
     image: "/team-abiola.jpg",
     bio: "Supervising structural integrity, subterranean utilities, and smart energy grid installations.",
   },
@@ -114,53 +85,64 @@ const AWARDS = [
     year: "2023",
     icon: Trophy,
     category: "Excellence Award",
-    slideDir: { x: -40, y: 0 }, // Slide from Left
+    slideDir: { x: -40, y: 0 },
   },
   {
     title: "Excellence in Customer Service",
     year: "2022",
     icon: ShieldCheck,
     category: "Client Satisfaction",
-    slideDir: { x: 0, y: 40 }, // Slide from Bottom
+    slideDir: { x: 0, y: 40 },
   },
   {
     title: "Top Property Developer Recognition",
     year: "2021",
     icon: Award,
     category: "Development",
-    slideDir: { x: 40, y: 0 }, // Slide from Right
+    slideDir: { x: 40, y: 0 },
   },
   {
     title: "Sustainable Development Award",
     year: "2020",
     icon: Leaf,
     category: "Green Building",
-    slideDir: { x: -40, y: 0 }, // Slide from Left
+    slideDir: { x: -40, y: 0 },
   },
   {
     title: "Innovation in Real Estate Tech",
     year: "2019",
     icon: Cpu,
     category: "Smart Homes",
-    slideDir: { x: 0, y: 40 }, // Slide from Bottom
+    slideDir: { x: 0, y: 40 },
   },
   {
     title: "Legal Title Integrity Honors",
     year: "2018",
     icon: Medal,
     category: "Trust & Security",
-    slideDir: { x: 40, y: 0 }, // Slide from Right
+    slideDir: { x: 40, y: 0 },
   },
 ];
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  // FETCH DYNAMIC EXECUTIVES FROM DATABASE
+  let teamMembers = [];
+  try {
+    const dbExecutives = await prisma.executive.findMany({
+      orderBy: { createdAt: "asc" },
+    });
+    teamMembers = dbExecutives.length > 0 ? dbExecutives : STATIC_TEAM_MEMBERS;
+  } catch (error) {
+    console.error("Error loading team members:", error);
+    teamMembers = STATIC_TEAM_MEMBERS;
+  }
+
   return (
-    <main className="min-h-screen bg-[#FBF9F5] text-stone-900 pt-16 sm:pt-20">
+    <main className="min-h-screen bg-white text-stone-900 pt-16 sm:pt-20">
       <Navbar />
 
       {/* HERO SECTION WITH VISIBLE VIDEO BACKGROUND */}
       <section className="relative pt-20 pb-28 md:pb-36 text-white overflow-hidden bg-slate-950">
-        {/* Background Video */}
         <video
           autoPlay
           loop
@@ -171,17 +153,11 @@ export default function AboutPage() {
           <source src="/about-video.mp4" type="video/mp4" />
         </video>
 
-        {/* Soft Transparent Purple Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-purple-950/80 via-purple-950/70 to-slate-950/85 z-0" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10 space-y-8 text-left">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="space-y-4 max-w-3xl"
-          >
-            <span className="px-3.5 py-1.5 bg-amber-500/20 text-[#F2B512] font-bold text-xs uppercase tracking-wider rounded-full border border-[#F2B512]/40 backdrop-blur-sm inline-block">
+          <div className="space-y-4 max-w-3xl">
+            <span className="px-3.5 py-1.5 bg-purple-500/20 text-purple-200 font-bold text-xs uppercase tracking-wider rounded-full border border-purple-400/40 backdrop-blur-sm inline-block">
               About Kayceelaw Properties
             </span>
             <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight">
@@ -190,35 +166,29 @@ export default function AboutPage() {
             <p className="text-stone-200 text-sm sm:text-lg leading-relaxed max-w-2xl">
               Kayceelaw Properties is a premier real estate development and legal advisory firm committed to delivering high-yield landed property, smart homes, and secure estates across Nigeria.
             </p>
-          </motion.div>
+          </div>
 
-          {/* SLOWLY ANIMATED STATS COUNTER GRID */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 pt-6"
-          >
+          {/* STATS COUNTER GRID */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 pt-6">
             {COMPANY_STATS.map((stat, idx) => (
               <div
                 key={idx}
                 className="bg-white/10 border border-white/20 backdrop-blur-md p-5 sm:p-6 rounded-2xl text-center shadow-lg"
               >
-                <span className="text-3xl sm:text-4xl font-extrabold text-[#F2B512] block">
-                  <AnimatedCounter value={stat.numericValue} suffix={stat.suffix} />
+                <span className="text-3xl sm:text-4xl font-extrabold text-purple-400 block">
+                  {stat.numericValue}{stat.suffix}
                 </span>
                 <span className="text-xs sm:text-sm text-stone-200 font-medium">
                   {stat.label}
                 </span>
               </div>
             ))}
-          </motion.div>
+          </div>
         </div>
 
-        {/* CURVED SECTION DIVIDER */}
         <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none z-20 pointer-events-none">
           <svg
-            className="relative block w-full h-12 sm:h-20 text-[#FBF9F5]"
+            className="relative block w-full h-12 sm:h-20 text-white"
             viewBox="0 0 1200 120"
             preserveAspectRatio="none"
             fill="currentColor"
@@ -241,31 +211,26 @@ export default function AboutPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {CORE_VALUES.map((val, idx) => (
-            <motion.div
+            <div
               key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.15 }}
               className="bg-white p-6 sm:p-8 rounded-3xl border border-stone-200/80 shadow-sm space-y-3 hover:shadow-md transition-shadow"
             >
-              <div className="w-10 h-10 rounded-full bg-amber-500/10 text-[#F2B512] flex items-center justify-center font-bold text-lg">
+              <div className="w-10 h-10 rounded-full bg-purple-600/10 text-purple-600 flex items-center justify-center font-bold text-lg">
                 0{idx + 1}
               </div>
               <h3 className="text-lg font-bold text-stone-900">{val.title}</h3>
               <p className="text-stone-600 text-xs sm:text-sm leading-relaxed">
                 {val.desc}
               </p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </section>
 
-      {/* AWARDS & RECOGNITION SECTION (NOW ON CREAM BACKGROUND ABOVE LEADERSHIP) */}
+      {/* AWARDS & RECOGNITION SECTION */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-16 space-y-12 overflow-hidden">
-        {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto space-y-3">
-          <span className="px-3.5 py-1.5 bg-amber-500/10 text-amber-700 font-bold text-xs uppercase tracking-widest rounded-full border border-amber-300 inline-block">
+          <span className="px-3.5 py-1.5 bg-purple-600/10 text-purple-700 font-bold text-xs uppercase tracking-widest rounded-full border border-purple-300 inline-block">
             Milestones & Honors
           </span>
           <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-stone-900">
@@ -276,40 +241,24 @@ export default function AboutPage() {
           </p>
         </div>
 
-        {/* Awards Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {AWARDS.map((award, idx) => {
             const Icon = award.icon;
             return (
-              <motion.div
+              <div
                 key={idx}
-                initial={{
-                  opacity: 0,
-                  x: award.slideDir.x,
-                  y: award.slideDir.y,
-                }}
-                whileInView={{ opacity: 1, x: 0, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{
-                  duration: 0.7,
-                  delay: idx * 0.1,
-                  ease: [0.21, 0.47, 0.32, 0.98],
-                }}
-                whileHover={{ y: -6, transition: { duration: 0.2 } }}
-                className="group bg-white border border-stone-200/90 p-6 rounded-3xl shadow-sm hover:shadow-xl hover:border-amber-400 transition-all duration-300 flex items-start gap-4"
+                className="group bg-white border border-stone-200/90 p-6 rounded-3xl shadow-sm hover:shadow-xl hover:border-purple-400 transition-all duration-300 flex items-start gap-4"
               >
-                {/* Custom Styled Icon Box */}
-                <div className="w-12 h-12 rounded-2xl bg-purple-950 text-[#F2B512] flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:bg-[#F2B512] group-hover:text-purple-950 transition-all duration-300 shadow-md">
+                <div className="w-12 h-12 rounded-2xl bg-purple-950 text-white flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:bg-purple-600 group-hover:text-white transition-all duration-300 shadow-md">
                   <Icon className="w-6 h-6 stroke-[2]" />
                 </div>
 
-                {/* Content */}
                 <div className="space-y-1.5 flex-1">
                   <div className="flex items-center justify-between">
                     <span className="text-[10px] font-bold uppercase tracking-wider text-purple-900">
                       {award.category}
                     </span>
-                    <span className="text-xs font-extrabold px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-800 border border-amber-300/60">
+                    <span className="text-xs font-extrabold px-2.5 py-0.5 rounded-full bg-purple-600/10 text-purple-800 border border-purple-300/60">
                       {award.year}
                     </span>
                   </div>
@@ -318,72 +267,14 @@ export default function AboutPage() {
                     {award.title}
                   </h3>
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>
       </section>
 
-      {/* EXECUTIVE LEADERSHIP SECTION */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-16 space-y-12 overflow-hidden">
-        <div className="text-center max-w-2xl mx-auto space-y-3">
-          <span className="text-purple-900 font-bold text-xs uppercase tracking-widest">
-            Executive Leadership
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-stone-900">
-            Meet the Minds Behind Kayceelaw
-          </h2>
-          <p className="text-stone-600 text-xs sm:text-base">
-            A seasoned team of legal experts, engineers, and real estate developers dedicated to your success.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {TEAM_MEMBERS.map((member, idx) => {
-            const isSlideFromLeft = idx % 2 === 0;
-
-            return (
-              <motion.div
-                key={idx}
-                initial={{
-                  opacity: 0,
-                  x: isSlideFromLeft ? -60 : 60,
-                }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.7, ease: "easeOut" }}
-                className="bg-white rounded-3xl border border-stone-200/80 overflow-hidden shadow-sm hover:shadow-lg transition-all flex flex-col"
-              >
-                <div className="h-72 w-full relative bg-stone-200 overflow-hidden">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500"
-                    onError={(e) => {
-                      (e.currentTarget as HTMLImageElement).src =
-                        "";
-                    }}
-                  />
-                </div>
-
-                <div className="p-6 space-y-2 flex-1 flex flex-col justify-between">
-                  <div className="space-y-1">
-                    <h3 className="text-xl font-bold text-stone-900">
-                      {member.name}
-                    </h3>
-                    <p className="text-xs font-semibold text-purple-900 uppercase tracking-wider">
-                      {member.title}
-                    </p>
-                    <p className="text-stone-600 text-xs leading-relaxed pt-2">
-                      {member.bio}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
-      </section>
+      {/* DYNAMIC EXECUTIVE LEADERSHIP SECTION */}
+      <ExecutiveGrid members={teamMembers} />
 
       {/* CALL TO ACTION CARD */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-16">
@@ -399,7 +290,7 @@ export default function AboutPage() {
           <div className="pt-2">
             <Link
               href="/properties"
-              className="inline-block px-8 py-3.5 bg-[#F2B512] hover:bg-amber-400 text-stone-950 font-bold text-xs sm:text-sm rounded-full transition-all shadow-md"
+              className="inline-block px-8 py-3.5 bg-white hover:bg-gray-100 text-purple-950 font-bold text-xs sm:text-sm rounded-full transition-all shadow-md"
             >
               Explore Our Properties
             </Link>
@@ -407,7 +298,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <Footer />
     </main>
   );
 }

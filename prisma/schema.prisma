@@ -1,0 +1,71 @@
+datasource db {
+  provider = "postgresql"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// --------------------------------------
+// PROPERTY MODEL
+// --------------------------------------
+model Property {
+  id           String   @id @default(cuid())
+  title        String
+  description  String
+  price        Float
+  location     String
+  type         String   // e.g., "Duplex", "Land", "Apartment", "Commercial", "Residential"
+  status       String   @default("Available") // "Available", "Sold", "Pending"
+  isFeatured   Boolean  @default(false)
+  images       String   // Stored as JSON string or comma-separated image URLs
+
+  // Map Coordinates
+  latitude     Float?
+  longitude    Float?
+
+  // Dynamic Specs (Bedrooms/Bathrooms hidden for Land in UI)
+  bedrooms     Int?
+  bathrooms    Int?
+  propertySize String?  // e.g., "450 sqm" or "2 Plots"
+
+  // Features & Landmarks
+  features     String   @default("") // Comma-separated: "24/7 Solar, CCTV, Biometric Door"
+  landmarks    String   @default("") // Key-Value pair string: "Airport:25 mins drive,CBD:12 mins drive"
+
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  inquiries    Inquiry[]
+}
+
+// --------------------------------------
+// INQUIRY MODEL
+// --------------------------------------
+model Inquiry {
+  id         String    @id @default(cuid())
+  name       String
+  email      String
+  phone      String
+  message    String
+  status     String    @default("Unread") // "Unread", "Read", "Replied"
+  createdAt  DateTime  @default(now())
+
+  // Optional connection to a specific property
+  propertyId String?
+  property   Property? @relation(fields: [propertyId], references: [id], onDelete: SetNull)
+}
+
+// --------------------------------------
+// EXECUTIVE / TEAM MODEL
+// --------------------------------------
+model Executive {
+  id        String   @id @default(cuid())
+  name      String
+  role      String
+  image     String?
+  bio       String?
+  email     String?  // Added optional email
+  phone     String?  // Added optional phone
+  createdAt DateTime @default(now())
+}
