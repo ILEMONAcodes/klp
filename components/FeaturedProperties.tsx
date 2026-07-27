@@ -89,13 +89,13 @@ export default function FeaturedProperties() {
   };
 
   return (
-    <section className="bg-[#FBF9F5] py-12 sm:py-20 px-4 sm:px-6 lg:px-12 overflow-hidden">
+    <section className="bg-white py-12 sm:py-20 px-4 sm:px-6 lg:px-12 overflow-hidden">
       <div className="max-w-7xl mx-auto space-y-8 sm:space-y-12">
         
         {/* HEADER SECTION */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6">
           <div className="max-w-2xl">
-            <span className="text-[#F2B512] font-semibold text-xs sm:text-base block mb-1 sm:mb-2 tracking-wide uppercase">
+            <span className="text-purple-600 font-semibold text-xs sm:text-base block mb-1 sm:mb-2 tracking-wide uppercase">
               Our Flagship Developments
             </span>
             <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-stone-900 tracking-tight leading-snug sm:leading-tight">
@@ -158,7 +158,7 @@ export default function FeaturedProperties() {
                       {project.title}
                     </h3>
                     <p className="text-stone-300 text-xs sm:text-sm flex items-center gap-1 font-light">
-                      <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#F2B512]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                      <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-purple-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
                         <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
                       </svg>
@@ -215,7 +215,7 @@ export default function FeaturedProperties() {
             className="inline-flex items-center gap-2.5 sm:gap-3 px-6 py-3 sm:px-8 sm:py-4 bg-stone-900 hover:bg-stone-800 text-white font-semibold rounded-full transition-all duration-300 text-xs sm:text-sm shadow-md hover:shadow-xl group"
           >
             <span>Explore All Developments</span>
-            <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#F2B512] text-stone-950 flex items-center justify-center group-hover:translate-x-1 transition-transform text-[10px] sm:text-xs font-bold">
+            <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-purple-600 text-white flex items-center justify-center group-hover:translate-x-1 transition-transform text-[10px] sm:text-xs font-bold">
               →
             </span>
           </Link>

@@ -40,7 +40,7 @@ export default async function AdminPropertiesPage() {
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="border-b border-stone-100 bg-[#FBF9F5] text-[11px] font-extrabold text-stone-500 uppercase tracking-wider">
+                <tr className="border-b border-stone-100 bg-white text-[11px] font-extrabold text-stone-500 uppercase tracking-wider">
                   <th className="py-4 px-6">Property</th>
                   <th className="py-4 px-4">Type</th>
                   <th className="py-4 px-4">Price</th>
@@ -97,7 +97,7 @@ export default async function AdminPropertiesPage() {
                       {/* FEATURED / STANDARD BADGE */}
                       <td className="py-4 px-4">
                         {prop.isFeatured ? (
-                          <span className="px-2.5 py-1 bg-amber-100 text-amber-800 text-[10px] font-bold rounded-lg">
+                          <span className="px-2.5 py-1 bg-purple-100 text-purple-800 text-[10px] font-bold rounded-lg">
                             Featured
                           </span>
                         ) : (

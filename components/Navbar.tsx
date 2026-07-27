@@ -35,8 +35,8 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-[#FBF9F5]/90 backdrop-blur-md shadow-sm py-3 border-b border-stone-200/60"
-          : "bg-[#FBF9F5] py-4"
+          ? "bg-white/90 backdrop-blur-md shadow-sm py-3 border-b border-stone-200/60"
+          : "bg-white py-4"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 flex items-center justify-between">
@@ -56,7 +56,7 @@ export default function Navbar() {
             <span className="font-extrabold text-base leading-tight tracking-tight text-stone-900">
               KAYCEELAW
             </span>
-            <span className="text-[10px] uppercase tracking-widest font-bold text-amber-700 -mt-0.5">
+            <span className="text-[10px] uppercase tracking-widest font-bold text-purple-700 -mt-0.5">
               Properties
             </span>
           </div>
@@ -78,7 +78,7 @@ export default function Navbar() {
               >
                 {link.name}
                 {isActive && (
-                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#F2B512] rounded-full" />
+                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-purple-600 rounded-full" />
                 )}
               </Link>
             );
@@ -91,7 +91,7 @@ export default function Navbar() {
             href="/contact"
             className="flex items-center gap-2 px-5 py-2.5 bg-purple-950 hover:bg-purple-900 text-white font-bold text-xs rounded-full transition-all shadow-sm hover:shadow-md"
           >
-            <Phone className="w-3.5 h-3.5 text-[#F2B512]" />
+            <Phone className="w-3.5 h-3.5 text-white" />
             Get in Touch
           </Link>
         </div>
@@ -112,7 +112,7 @@ export default function Navbar() {
 
       {/* MOBILE NAVIGATION DRAWER */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-[#FBF9F5] border-b border-stone-200/80 px-4 pt-4 pb-6 space-y-4 shadow-xl">
+        <div className="md:hidden bg-white border-b border-stone-200/80 px-4 pt-4 pb-6 space-y-4 shadow-xl">
           <div className="flex flex-col space-y-3">
             {NAV_LINKS.map((link) => {
               const isActive = pathname === link.href;
@@ -137,7 +137,7 @@ export default function Navbar() {
             <Link
               href="/contact"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="flex items-center justify-center gap-2 w-full py-3 bg-[#F2B512] text-purple-950 font-bold text-xs rounded-xl shadow-sm"
+              className="flex items-center justify-center gap-2 w-full py-3 bg-purple-600 text-white font-bold text-xs rounded-xl shadow-sm"
             >
               <Phone className="w-4 h-4" />
               Contact Us Now

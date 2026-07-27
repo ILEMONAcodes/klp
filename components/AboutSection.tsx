@@ -9,7 +9,7 @@ const stats = [
     suffix: "+",
     label: "Happy Clients Served",
     icon: (
-      <svg className="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+      <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
       </svg>
     ),
@@ -19,7 +19,7 @@ const stats = [
     suffix: "+",
     label: "Hectares Active",
     icon: (
-      <svg className="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+      <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3a1.5 1.5 0 011.5-1.5h1.5a1.5 1.5 0 011.5 1.5v3m0 0h3" />
       </svg>
     ),
@@ -29,7 +29,7 @@ const stats = [
     suffix: "%",
     label: "Verified Titles",
     icon: (
-      <svg className="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+      <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296A3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043A3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
       </svg>
     ),
@@ -39,7 +39,7 @@ const stats = [
     suffix: "/7",
     label: "Dedicated Support",
     icon: (
-      <svg className="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+      <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
       </svg>
     ),
@@ -48,11 +48,11 @@ const stats = [
 
 export default function AboutSection() {
   return (
-    <section id="about" className="relative bg-[#fbf9f5] text-stone-900 py-10 sm:py-16 px-4 sm:px-6 lg:px-12 overflow-hidden">
+    <section id="about" className="relative bg-white text-stone-900 py-10 sm:py-16 px-4 sm:px-6 lg:px-12 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         
         {/* MAIN 2-COLUMN LAYOUT */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
+        <div className=" flex gap-6">
           
           {/* LEFT COLUMN: COMPACT MOBILE HEIGHT VIDEO BOX */}
           <motion.div
@@ -60,7 +60,7 @@ export default function AboutSection() {
             whileInView={{ opacity: 1, scale: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.9, ease: [0.215, 0.61, 0.355, 1] }}
-            className="lg:col-span-5 w-full h-[260px] sm:h-[360px] lg:h-full lg:min-h-[620px] relative"
+            className="lg:col-span-5 w-full max-h-[80dvh]  relative"
           >
             <div className="relative w-full h-full rounded-tr-[60px] sm:rounded-tr-[100px] rounded-bl-[20px] sm:rounded-bl-[30px] rounded-tl-[16px] rounded-br-[16px] overflow-hidden shadow-xl">
               <video
@@ -77,17 +77,17 @@ export default function AboutSection() {
           </motion.div>
 
           {/* RIGHT COLUMN: HEADERS, TEXT, STATS & CATALOG CTA */}
-          <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
+          <div className=" flex flex-col justify-between ">
             
             {/* Headers & Narrative */}
-            <div className="space-y-4">
+            <div className="space-y-2">
               <motion.div
                 initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
+                viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.7 }}
               >
-                <span className="text-amber-500 font-bold text-xs sm:text-base block mb-1">
+                <span className="text-purple-600 font-bold text-xs sm:text-base block mb-1">
                   About Us
                 </span>
 
@@ -113,7 +113,7 @@ export default function AboutSection() {
               <motion.p
                 initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
+                viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.7, delay: 0.2 }}
                 className="text-stone-700 text-xs sm:text-base font-normal leading-relaxed"
               >
@@ -125,21 +125,21 @@ export default function AboutSection() {
             </div>
 
             {/* 2x2 Icon Stats Grid */}
-            <div className="grid grid-cols-2 gap-4 sm:gap-6 pt-4 border-t border-stone-300/60">
+            <div className="grid grid-cols-2 gap-4 border-t pt-2 border-stone-300/60">
               {stats.map((stat, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 25 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-40px" }}
+                  viewport={{ once: true, margin: "-20px" }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="flex items-start space-x-2.5 sm:space-x-3"
                 >
-                  <div className="p-2 sm:p-2.5 bg-amber-500/10 rounded-xl shrink-0">
+                  <div className="p-2 sm:p-2.5 bg-purple-600/10 rounded-xl shrink-0">
                     {stat.icon}
                   </div>
                   <div>
-                    <div className="text-xl sm:text-3xl font-extrabold text-amber-500 tracking-tight">
+                    <div className="text-xl sm:text-3xl font-extrabold text-purple-600 tracking-tight">
                       <AnimatedCounter
                         value={stat.value}
                         suffix={stat.suffix}

@@ -72,7 +72,7 @@ export default async function AdminInquiriesPage() {
               </div>
 
               {/* MESSAGE CONTENT */}
-              <p className="text-xs text-stone-700 leading-relaxed bg-[#FBF9F5] p-4 rounded-2xl border border-stone-100">
+              <p className="text-xs text-stone-700 leading-relaxed bg-white p-4 rounded-2xl border border-stone-100">
                 {inquiry.message}
               </p>
             </div>

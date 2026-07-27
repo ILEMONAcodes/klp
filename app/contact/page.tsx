@@ -16,7 +16,6 @@ import {
   Building,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 
 // KEY DIRECT CONTACTS
 const DIRECT_CONTACTS = [
@@ -157,20 +156,20 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#FBF9F5] text-stone-900 pt-16 sm:pt-20">
+    <main className="min-h-screen bg-white text-stone-900 pt-16 sm:pt-20">
       <Navbar />
 
       {/* HERO SECTION */}
       <section className="relative py-16 sm:py-24 bg-purple-950 text-white overflow-hidden">
         {/* Subtle Ambient Gold Glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-[#F2B512]/10 blur-[100px] rounded-full pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-purple-600/10 blur-[100px] rounded-full pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10 text-center space-y-4">
           <motion.span
             initial={{ opacity: 0, y: -15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="px-3.5 py-1.5 bg-[#F2B512]/10 text-[#F2B512] font-bold text-xs uppercase tracking-widest rounded-full border border-[#F2B512]/30 inline-block"
+            className="px-3.5 py-1.5 bg-purple-600/10 text-purple-400 font-bold text-xs uppercase tracking-widest rounded-full border border-[#F2B512]/30 inline-block"
           >
             Get In Touch
           </motion.span>
@@ -237,7 +236,7 @@ export default function ContactPage() {
               {/* FULL NAME */}
               <motion.div variants={itemSlideLeft} className="space-y-1.5">
                 <label className="text-xs font-bold uppercase tracking-wider text-stone-700">
-                  Full Name <span className="text-amber-600">*</span>
+                  Full Name <span className="text-purple-600">*</span>
                 </label>
                 <input
                   type="text"
@@ -245,7 +244,7 @@ export default function ContactPage() {
                   value={formData.fullName}
                   onChange={handleChange}
                   placeholder="e.g. John Doe"
-                  className={`w-full px-4 py-3 bg-[#FBF9F5] border text-stone-900 text-sm rounded-xl outline-none transition-all duration-200 ${
+                  className={`w-full px-4 py-3 bg-white border text-stone-900 text-sm rounded-xl outline-none transition-all duration-200 ${
                     errors.fullName
                       ? "border-red-500 focus:ring-2 focus:ring-red-200"
                       : "border-stone-300 focus:border-purple-950 focus:ring-2 focus:ring-purple-950/10"
@@ -263,7 +262,7 @@ export default function ContactPage() {
                 {/* EMAIL */}
                 <motion.div variants={itemSlideLeft} className="space-y-1.5">
                   <label className="text-xs font-bold uppercase tracking-wider text-stone-700">
-                    Email Address <span className="text-amber-600">*</span>
+                    Email Address <span className="text-purple-600">*</span>
                   </label>
                   <input
                     type="email"
@@ -271,7 +270,7 @@ export default function ContactPage() {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="john@example.com"
-                    className={`w-full px-4 py-3 bg-[#FBF9F5] border text-stone-900 text-sm rounded-xl outline-none transition-all duration-200 ${
+                    className={`w-full px-4 py-3 bg-white border text-stone-900 text-sm rounded-xl outline-none transition-all duration-200 ${
                       errors.email
                         ? "border-red-500 focus:ring-2 focus:ring-red-200"
                         : "border-stone-300 focus:border-purple-950 focus:ring-2 focus:ring-purple-950/10"
@@ -287,7 +286,7 @@ export default function ContactPage() {
                 {/* PHONE NUMBER */}
                 <motion.div variants={itemSlideLeft} className="space-y-1.5">
                   <label className="text-xs font-bold uppercase tracking-wider text-stone-700">
-                    Phone Number <span className="text-amber-600">*</span>
+                    Phone Number <span className="text-purple-600">*</span>
                   </label>
                   <input
                     type="tel"
@@ -295,7 +294,7 @@ export default function ContactPage() {
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="+234..."
-                    className={`w-full px-4 py-3 bg-[#FBF9F5] border text-stone-900 text-sm rounded-xl outline-none transition-all duration-200 ${
+                    className={`w-full px-4 py-3 bg-white border text-stone-900 text-sm rounded-xl outline-none transition-all duration-200 ${
                       errors.phone
                         ? "border-red-500 focus:ring-2 focus:ring-red-200"
                         : "border-stone-300 focus:border-purple-950 focus:ring-2 focus:ring-purple-950/10"
@@ -318,7 +317,7 @@ export default function ContactPage() {
                   name="propertyPreference"
                   value={formData.propertyPreference}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-[#FBF9F5] border border-stone-300 text-stone-900 text-sm rounded-xl outline-none focus:border-purple-950 focus:ring-2 focus:ring-purple-950/10 transition-all duration-200 cursor-pointer"
+                  className="w-full px-4 py-3 bg-white border border-stone-300 text-stone-900 text-sm rounded-xl outline-none focus:border-purple-950 focus:ring-2 focus:ring-purple-950/10 transition-all duration-200 cursor-pointer"
                 >
                   <option value="General Inquiry">General Inquiry</option>
                   <option value="Residential Property Acquisition">
@@ -339,7 +338,7 @@ export default function ContactPage() {
               {/* MESSAGE AREA */}
               <motion.div variants={itemSlideLeft} className="space-y-1.5">
                 <label className="text-xs font-bold uppercase tracking-wider text-stone-700">
-                  Message <span className="text-amber-600">*</span>
+                  Message <span className="text-purple-600">*</span>
                 </label>
                 <textarea
                   name="message"
@@ -347,7 +346,7 @@ export default function ContactPage() {
                   value={formData.message}
                   onChange={handleChange}
                   placeholder="Tell us about your property goals or questions..."
-                  className={`w-full px-4 py-3 bg-[#FBF9F5] border text-stone-900 text-sm rounded-xl outline-none transition-all duration-200 resize-none ${
+                  className={`w-full px-4 py-3 bg-white border text-stone-900 text-sm rounded-xl outline-none transition-all duration-200 resize-none ${
                     errors.message
                       ? "border-red-500 focus:ring-2 focus:ring-red-200"
                       : "border-stone-300 focus:border-purple-950 focus:ring-2 focus:ring-purple-950/10"
@@ -373,7 +372,7 @@ export default function ContactPage() {
                   <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                 ) : (
                   <>
-                    <Send className="w-4 h-4 text-[#F2B512]" /> Send Message
+                    <Send className="w-4 h-4 text-purple-400" /> Send Message
                   </>
                 )}
               </motion.button>
@@ -403,7 +402,7 @@ export default function ContactPage() {
                   href="tel:+2348164173622"
                   className="flex items-center gap-3.5 p-3 rounded-2xl hover:bg-stone-50 transition-colors group"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-purple-950/10 text-purple-950 flex items-center justify-center shrink-0 group-hover:bg-purple-950 group-hover:text-[#F2B512] transition-colors">
+                  <div className="w-10 h-10 rounded-xl bg-purple-950/10 text-purple-950 flex items-center justify-center shrink-0 group-hover:bg-purple-950 group-hover:text-purple-400 transition-colors">
                     <Phone className="w-5 h-5" />
                   </div>
                   <div>
@@ -421,7 +420,7 @@ export default function ContactPage() {
                   href="mailto:kayceelawproperties@yahoo.com"
                   className="flex items-center gap-3.5 p-3 rounded-2xl hover:bg-stone-50 transition-colors group"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-purple-950/10 text-purple-950 flex items-center justify-center shrink-0 group-hover:bg-purple-950 group-hover:text-[#F2B512] transition-colors">
+                  <div className="w-10 h-10 rounded-xl bg-purple-950/10 text-purple-950 flex items-center justify-center shrink-0 group-hover:bg-purple-950 group-hover:text-purple-400 transition-colors">
                     <Mail className="w-5 h-5" />
                   </div>
                   <div>
@@ -477,9 +476,9 @@ export default function ContactPage() {
                   return (
                     <div
                       key={idx}
-                      className="p-3.5 rounded-2xl bg-[#FBF9F5] border border-stone-200/60 flex items-start gap-3"
+                      className="p-3.5 rounded-2xl bg-white border border-stone-200/60 flex items-start gap-3"
                     >
-                      <div className="w-8 h-8 rounded-lg bg-amber-500/10 text-amber-800 flex items-center justify-center shrink-0 mt-0.5">
+                      <div className="w-8 h-8 rounded-lg bg-purple-600/10 text-purple-800 flex items-center justify-center shrink-0 mt-0.5">
                         <PersonIcon className="w-4 h-4" />
                       </div>
                       <div className="space-y-0.5 text-xs">
@@ -592,7 +591,6 @@ export default function ContactPage() {
         </motion.div>
       </section>
 
-      <Footer />
     </main>
   );
 }

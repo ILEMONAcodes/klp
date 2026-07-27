@@ -162,7 +162,7 @@ export default function NewPropertyPage({
               required
               defaultValue={editData?.title || ""}
               placeholder="e.g. Victoria Crest Estate"
-              className="w-full px-4 py-2.5 bg-[#FBF9F5] border border-stone-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-purple-950 text-stone-800"
+              className="w-full px-4 py-2.5 bg-white border border-stone-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-purple-950 text-stone-800"
             />
           </div>
 
@@ -175,7 +175,7 @@ export default function NewPropertyPage({
               required
               defaultValue={editData?.price || ""}
               placeholder="180000000"
-              className="w-full px-4 py-2.5 bg-[#FBF9F5] border border-stone-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-purple-950 text-stone-800"
+              className="w-full px-4 py-2.5 bg-white border border-stone-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-purple-950 text-stone-800"
             />
           </div>
 
@@ -185,7 +185,7 @@ export default function NewPropertyPage({
               name="type"
               value={propertyType}
               onChange={(e) => setPropertyType(e.target.value)}
-              className="w-full px-4 py-2.5 bg-[#FBF9F5] border border-stone-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-purple-950 text-stone-800"
+              className="w-full px-4 py-2.5 bg-white border border-stone-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-purple-950 text-stone-800"
             >
               <option value="Residential">Residential</option>
               <option value="Commercial">Commercial</option>
@@ -203,7 +203,7 @@ export default function NewPropertyPage({
               value={location}
               onChange={(e) => setLocation(e.target.value)}
               placeholder="e.g. Lekki Phase 1, Lagos"
-              className="w-full px-4 py-2.5 bg-[#FBF9F5] border border-stone-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-purple-950 text-stone-800"
+              className="w-full px-4 py-2.5 bg-white border border-stone-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-purple-950 text-stone-800"
             />
           </div>
 
@@ -214,7 +214,7 @@ export default function NewPropertyPage({
               name="propertySize"
               defaultValue={editData?.propertySize || ""}
               placeholder="e.g. 600 sqm or 2 Hectares"
-              className="w-full px-4 py-2.5 bg-[#FBF9F5] border border-stone-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-purple-950 text-stone-800"
+              className="w-full px-4 py-2.5 bg-white border border-stone-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-purple-950 text-stone-800"
             />
           </div>
 
@@ -244,7 +244,7 @@ export default function NewPropertyPage({
             </div>
           )}
 
-          <div className="sm:col-span-2 p-4 bg-[#FBF9F5] rounded-2xl border border-stone-200/80 space-y-3">
+          <div className="sm:col-span-2 p-4 bg-white rounded-2xl border border-stone-200/80 space-y-3">
             <div>
               <label className="block text-xs font-bold text-stone-800">
                 Map Location Pin
@@ -298,7 +298,7 @@ export default function NewPropertyPage({
             </div>
           </div>
 
-          <div className="sm:col-span-2 p-4 bg-[#FBF9F5] rounded-2xl border border-stone-200/80 space-y-3">
+          <div className="sm:col-span-2 p-4 bg-white rounded-2xl border border-stone-200/80 space-y-3">
             <label className="block text-xs font-bold text-stone-800">
               Property Images
             </label>
@@ -354,7 +354,7 @@ export default function NewPropertyPage({
               name="features"
               defaultValue={editData?.features || ""}
               placeholder="24/7 Power, Swimming Pool, Security"
-              className="w-full px-4 py-2.5 bg-[#FBF9F5] border border-stone-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-purple-950 text-stone-800"
+              className="w-full px-4 py-2.5 bg-white border border-stone-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-purple-950 text-stone-800"
             />
           </div>
 
@@ -367,7 +367,7 @@ export default function NewPropertyPage({
               name="landmarks"
               defaultValue={editData?.landmarks || ""}
               placeholder="Shoprite:5 mins away, Airport:20 mins away"
-              className="w-full px-4 py-2.5 bg-[#FBF9F5] border border-stone-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-purple-950 text-stone-800"
+              className="w-full px-4 py-2.5 bg-white border border-stone-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-purple-950 text-stone-800"
             />
           </div>
 
@@ -379,7 +379,7 @@ export default function NewPropertyPage({
               required
               defaultValue={editData?.description || ""}
               placeholder="Provide a detailed description..."
-              className="w-full px-4 py-2.5 bg-[#FBF9F5] border border-stone-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-purple-950 text-stone-800"
+              className="w-full px-4 py-2.5 bg-white border border-stone-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-purple-950 text-stone-800"
             ></textarea>
           </div>
 

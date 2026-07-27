@@ -1,5 +1,6 @@
 import { Syne, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
+import ConditionalFooter from "@/components/ConditionalFooter";
 
 const syne = Syne({
   subsets: ["latin"],
@@ -20,7 +21,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${syne.variable} ${jakarta.variable}`}>
-      <body className="font-sans antialiased">{children}</body>
+      <body className="font-sans antialiased min-h-screen flex flex-col">
+        <div className="flex-1">{children}</div>
+        <ConditionalFooter />
+      </body>
     </html>
   );
 }

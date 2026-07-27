@@ -42,7 +42,7 @@ export default function AdminLoginPage() {
 
   return (
     // Update main background to CREAM color
-    <div className="min-h-screen bg-[#FBF9F5] text-stone-900 flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen bg-white text-stone-900 flex flex-col items-center justify-center p-4">
       
       {/* Return to website link (top left) */}
       <Link href="/" className="absolute top-6 left-6 flex items-center gap-2 px-4 py-2 bg-stone-100 hover:bg-stone-200 text-stone-700 font-semibold text-xs rounded-full border border-stone-200/60 transition-colors">
@@ -54,13 +54,13 @@ export default function AdminLoginPage() {
       <div className="w-full max-w-lg bg-[#43016C] border border-purple-950 rounded-3xl p-10 md:p-14 shadow-3xl space-y-9 relative overflow-hidden">
         
         {/* Abstract background shape for flair */}
-        <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-[#F2B512] opacity-10 blur-3xl pointer-events-none"></div>
+        <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-purple-500 opacity-10 blur-3xl pointer-events-none"></div>
 
         {/* LOGO & HEADER */}
         <div className="text-center space-y-4 relative z-10">
           <div className="inline-flex p-3.5 bg-white/10 border border-white/20 rounded-2xl">
             {/* The icon from Screen Shot 2026-07-23 at 5.43.55 PM.png */}
-            <ShieldCheck className="w-9 h-9 text-[#F2B512]" />
+            <ShieldCheck className="w-9 h-9 text-purple-300" />
           </div>
           <h1 className="text-3xl font-extrabold text-white tracking-tight">
             Kayceelaw Admin Portal
@@ -93,7 +93,7 @@ export default function AdminLoginPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 // Styling input fields for purple background
-                className="w-full pl-11 pr-4 py-4 bg-white/10 border border-white/10 text-white rounded-xl focus:outline-none focus:border-[#F2B512] text-xs font-medium placeholder-purple-300/60"
+                className="w-full pl-11 pr-4 py-4 bg-white/10 border border-white/10 text-white rounded-xl focus:outline-none focus:border-purple-400 text-xs font-medium placeholder-purple-300/60"
               />
             </div>
           </div>
@@ -110,7 +110,7 @@ export default function AdminLoginPage() {
                 placeholder="••••••••••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full pl-11 pr-4 py-4 bg-white/10 border border-white/10 text-white rounded-xl focus:outline-none focus:border-[#F2B512] text-xs font-medium placeholder-purple-300/60"
+                className="w-full pl-11 pr-4 py-4 bg-white/10 border border-white/10 text-white rounded-xl focus:outline-none focus:border-purple-400 text-xs font-medium placeholder-purple-300/60"
               />
             </div>
           </div>

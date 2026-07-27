@@ -44,7 +44,7 @@ export default function AuthenticatedAdminLayout({
   };
 
   return (
-    <div className="min-h-screen bg-[#FBF9F5] text-stone-900 flex flex-col md:flex-row">
+    <div className="min-h-screen bg-white text-stone-900 flex flex-col md:flex-row">
       {/* MOBILE TOP HEADER */}
       <header className="md:hidden bg-purple-950 text-white p-4 flex items-center justify-between sticky top-0 z-50 border-b border-purple-900">
         <div className="flex items-center gap-3">
@@ -57,7 +57,7 @@ export default function AuthenticatedAdminLayout({
               className="object-contain"
             />
           </div>
-          <span className="font-extrabold text-sm tracking-tight text-[#F2B512]">
+          <span className="font-extrabold text-sm tracking-tight text-white">
             KAYCEELAW ADMIN
           </span>
         </div>
@@ -89,7 +89,7 @@ export default function AuthenticatedAdminLayout({
               />
             </div>
             <div>
-              <h1 className="font-extrabold text-sm tracking-tight text-[#F2B512]">
+              <h1 className="font-extrabold text-sm tracking-tight text-white">
                 KAYCEELAW
               </h1>
               <p className="text-[10px] uppercase tracking-widest font-bold text-purple-300">
@@ -110,7 +110,7 @@ export default function AuthenticatedAdminLayout({
                   onClick={() => setIsSidebarOpen(false)}
                   className={`flex items-center gap-3 px-4 py-3 rounded-2xl text-xs font-bold transition-all ${
                     isActive
-                      ? "bg-[#F2B512] text-purple-950 shadow-md"
+                      ? "bg-purple-600 text-white shadow-md"
                       : "text-purple-200 hover:bg-white/10 hover:text-white"
                   }`}
                 >
@@ -130,7 +130,7 @@ export default function AuthenticatedAdminLayout({
             className="flex items-center justify-between px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-xs font-semibold text-purple-200 transition-colors"
           >
             <span className="flex items-center gap-2">
-              <ExternalLink className="w-3.5 h-3.5 text-[#F2B512]" /> View Website
+              <ExternalLink className="w-3.5 h-3.5 text-purple-300" /> View Website
             </span>
           </Link>
 

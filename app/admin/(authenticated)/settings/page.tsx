@@ -129,7 +129,7 @@ export default function AdminSettingsPage() {
                 onChange={(e) =>
                   setProfileData({ ...profileData, fullName: e.target.value })
                 }
-                className="w-full p-3 bg-[#FBF9F5] border border-stone-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-purple-950"
+                className="w-full p-3 bg-white border border-stone-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-purple-950"
               />
             </div>
 
@@ -144,7 +144,7 @@ export default function AdminSettingsPage() {
                 onChange={(e) =>
                   setProfileData({ ...profileData, email: e.target.value })
                 }
-                className="w-full p-3 bg-[#FBF9F5] border border-stone-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-purple-950"
+                className="w-full p-3 bg-white border border-stone-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-purple-950"
               />
             </div>
           </div>
@@ -166,7 +166,7 @@ export default function AdminSettingsPage() {
               type="submit"
               className="flex items-center gap-2 px-5 py-2.5 bg-purple-950 hover:bg-purple-900 text-white font-bold text-xs rounded-xl shadow-md transition-all cursor-pointer"
             >
-              <Save className="w-4 h-4 text-[#F2B512]" /> Update Profile
+              <Save className="w-4 h-4 text-purple-400" /> Update Profile
             </button>
           </div>
         </form>
@@ -201,7 +201,7 @@ export default function AdminSettingsPage() {
               onChange={(e) =>
                 setPasswords({ ...passwords, currentPassword: e.target.value })
               }
-              className="w-full p-3 bg-[#FBF9F5] border border-stone-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-purple-950"
+              className="w-full p-3 bg-white border border-stone-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-purple-950"
             />
           </div>
 
@@ -218,7 +218,7 @@ export default function AdminSettingsPage() {
                 onChange={(e) =>
                   setPasswords({ ...passwords, newPassword: e.target.value })
                 }
-                className="w-full p-3 bg-[#FBF9F5] border border-stone-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-purple-950"
+                className="w-full p-3 bg-white border border-stone-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-purple-950"
               />
             </div>
 
@@ -237,7 +237,7 @@ export default function AdminSettingsPage() {
                     confirmPassword: e.target.value,
                   })
                 }
-                className="w-full p-3 bg-[#FBF9F5] border border-stone-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-purple-950"
+                className="w-full p-3 bg-white border border-stone-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-purple-950"
               />
             </div>
           </div>
@@ -247,7 +247,7 @@ export default function AdminSettingsPage() {
               type="submit"
               className="flex items-center gap-2 px-5 py-2.5 bg-purple-950 hover:bg-purple-900 text-white font-bold text-xs rounded-xl shadow-md transition-all cursor-pointer"
             >
-              <Lock className="w-4 h-4 text-[#F2B512]" /> Change Password
+              <Lock className="w-4 h-4 text-purple-400" /> Change Password
             </button>
           </div>
         </form>
@@ -270,7 +270,7 @@ export default function AdminSettingsPage() {
         </div>
 
         <div className="space-y-4">
-          <div className="flex items-center justify-between p-4 bg-[#FBF9F5] border border-stone-200 rounded-2xl">
+          <div className="flex items-center justify-between p-4 bg-white border border-stone-200 rounded-2xl">
             <div className="space-y-0.5">
               <span className="text-xs font-bold text-stone-900 block">
                 Inquiry Email Alerts
@@ -295,7 +295,7 @@ export default function AdminSettingsPage() {
             </label>
           </div>
 
-          <div className="flex items-center justify-between p-4 bg-[#FBF9F5] border border-stone-200 rounded-2xl">
+          <div className="flex items-center justify-between p-4 bg-white border border-stone-200 rounded-2xl">
             <div className="space-y-0.5">
               <span className="text-xs font-bold text-stone-900 block">
                 Automatic Session Timeout

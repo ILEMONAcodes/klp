@@ -40,7 +40,7 @@ export default async function AdminExecutivesPage() {
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="border-b border-stone-100 bg-[#FBF9F5] text-[11px] font-extrabold text-stone-500 uppercase tracking-wider">
+                <tr className="border-b border-stone-100 bg-white text-[11px] font-extrabold text-stone-500 uppercase tracking-wider">
                   <th className="py-4 px-6">Member</th>
                   <th className="py-4 px-4">Role</th>
                   <th className="py-4 px-4">Contact</th>

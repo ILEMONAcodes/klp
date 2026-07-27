@@ -91,7 +91,7 @@ export default function AdminDashboardPage() {
             href="/admin/properties/new"
             className="flex items-center gap-2 px-4 py-2.5 bg-purple-950 hover:bg-purple-900 text-white font-bold text-xs rounded-xl shadow-sm transition-all"
           >
-            <Plus className="w-4 h-4 text-[#F2B512]" /> Add New Property
+            <Plus className="w-4 h-4 text-purple-400" /> Add New Property
           </Link>
           <Link
             href="/admin/inquiries"
@@ -151,7 +151,7 @@ export default function AdminDashboardPage() {
             </div>
             <Link
               href="/admin/inquiries"
-              className="text-purple-950 hover:text-amber-600 font-bold text-xs flex items-center gap-1"
+              className="text-purple-950 hover:text-purple-600 font-bold text-xs flex items-center gap-1"
             >
               View All <ArrowUpRight className="w-4 h-4" />
             </Link>
@@ -159,7 +159,7 @@ export default function AdminDashboardPage() {
 
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs text-stone-700">
-              <thead className="bg-[#FBF9F5] text-stone-900 uppercase text-[10px] font-extrabold tracking-wider border-b border-stone-200/80">
+              <thead className="bg-white text-stone-900 uppercase text-[10px] font-extrabold tracking-wider border-b border-stone-200/80">
                 <tr>
                   <th className="py-3 px-3">Client Name</th>
                   <th className="py-3 px-3">Preference</th>
@@ -186,7 +186,7 @@ export default function AdminDashboardPage() {
                       <span
                         className={`px-2.5 py-1 rounded-full text-[10px] font-bold ${
                           inq.status === "New"
-                            ? "bg-amber-500/10 text-amber-800 border border-amber-300"
+                            ? "bg-purple-600/10 text-purple-800 border border-purple-300"
                             : inq.status === "Contacted"
                             ? "bg-emerald-500/10 text-emerald-800 border border-emerald-300"
                             : "bg-stone-100 text-stone-700"
@@ -206,7 +206,7 @@ export default function AdminDashboardPage() {
         <div className="lg:col-span-4 space-y-6">
           <div className="bg-purple-950 text-white p-6 rounded-3xl shadow-md space-y-4 relative overflow-hidden">
             <div className="space-y-1">
-              <span className="text-[10px] font-bold uppercase tracking-widest text-[#F2B512]">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-purple-400">
                 Database Backup
               </span>
               <h3 className="text-lg font-bold">Inquiries Export Ready</h3>
@@ -216,7 +216,7 @@ export default function AdminDashboardPage() {
             </div>
             <Link
               href="/admin/inquiries"
-              className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#F2B512] hover:bg-amber-400 text-purple-950 font-bold text-xs rounded-xl shadow-sm transition-all"
+              className="inline-flex items-center gap-2 px-4 py-2.5 bg-purple-600 hover:bg-purple-500 text-purple-950 font-bold text-xs rounded-xl shadow-sm transition-all"
             >
               <Download className="w-4 h-4" /> Go to Export Center
             </Link>

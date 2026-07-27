@@ -1,12 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import FeaturedProperties from "@/components/FeaturedProperties";
 import AboutSection from "@/components/AboutSection";
-import Footer from "@/components/Footer";
 
 // Create an animate d Link component using Framer Motion
 const MotionLink = motion.create(Link);
@@ -55,7 +53,7 @@ export default function Home() {
             <MotionLink
               href="/properties"
               whileTap={{ scale: 0.96 }}
-              className="w-full sm:w-auto px-6 py-3 rounded-full bg-amber-500 hover:bg-amber-400 active:bg-amber-600 text-slate-950 font-semibold text-sm transition-all duration-200 shadow-lg shadow-amber-500/20 text-center"
+              className="w-full sm:w-auto px-6 py-3 rounded-full bg-purple-600 hover:bg-purple-500 active:bg-purple-700 text-white font-semibold text-sm transition-all duration-200 shadow-lg shadow-purple-600/20 text-center"
             >
               Explore Estates
             </MotionLink>
@@ -75,7 +73,6 @@ export default function Home() {
 
       <AboutSection /> 
 
-      <Footer />
     </main>
   );
 }

@@ -72,7 +72,7 @@ export default function NewExecutivePage() {
                 </button>
               </div>
             ) : (
-              <label className="w-full flex flex-col items-center justify-center p-5 border-2 border-dashed border-stone-300 hover:border-purple-950 rounded-2xl bg-[#FBF9F5] hover:bg-purple-50/20 transition-all cursor-pointer group">
+              <label className="w-full flex flex-col items-center justify-center p-5 border-2 border-dashed border-stone-300 hover:border-purple-950 rounded-2xl bg-white hover:bg-purple-50/20 transition-all cursor-pointer group">
                 <UploadCloud className="w-6 h-6 text-stone-400 group-hover:text-purple-950 mb-1" />
                 <span className="text-xs font-bold text-stone-700 group-hover:text-purple-950">
                   Upload Executive Headshot
@@ -99,7 +99,7 @@ export default function NewExecutivePage() {
               name="name"
               required
               placeholder="e.g. Arc. Kaycee Lawal"
-              className="w-full px-4 py-2.5 bg-[#FBF9F5] border border-stone-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-purple-950 text-stone-800"
+              className="w-full px-4 py-2.5 bg-white border border-stone-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-purple-950 text-stone-800"
             />
           </div>
 
@@ -112,7 +112,7 @@ export default function NewExecutivePage() {
               name="role"
               required
               placeholder="e.g. Chief Executive Officer"
-              className="w-full px-4 py-2.5 bg-[#FBF9F5] border border-stone-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-purple-950 text-stone-800"
+              className="w-full px-4 py-2.5 bg-white border border-stone-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-purple-950 text-stone-800"
             />
           </div>
         </div>
@@ -127,7 +127,7 @@ export default function NewExecutivePage() {
               type="email"
               name="email"
               placeholder="kaycee@kayceelaw.com"
-              className="w-full px-4 py-2.5 bg-[#FBF9F5] border border-stone-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-purple-950 text-stone-800"
+              className="w-full px-4 py-2.5 bg-white border border-stone-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-purple-950 text-stone-800"
             />
           </div>
 
@@ -139,7 +139,7 @@ export default function NewExecutivePage() {
               type="text"
               name="phone"
               placeholder="+234 800 000 0000"
-              className="w-full px-4 py-2.5 bg-[#FBF9F5] border border-stone-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-purple-950 text-stone-800"
+              className="w-full px-4 py-2.5 bg-white border border-stone-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-purple-950 text-stone-800"
             />
           </div>
         </div>
@@ -153,7 +153,7 @@ export default function NewExecutivePage() {
             name="bio"
             rows={4}
             placeholder="Write a brief professional background..."
-            className="w-full px-4 py-2.5 bg-[#FBF9F5] border border-stone-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-purple-950 text-stone-800"
+            className="w-full px-4 py-2.5 bg-white border border-stone-200 rounded-xl text-xs font-semibold focus:outline-none focus:border-purple-950 text-stone-800"
           ></textarea>
         </div>
 
