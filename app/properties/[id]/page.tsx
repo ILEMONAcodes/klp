@@ -16,7 +16,7 @@ export default async function PropertyDetailPage({
 
   const isLand = property.type.toLowerCase() === "land";
   const imageUrls = property.images ? property.images.split(",") : ["/placeholder.jpg"];
-  const featureList = property.features ? property.features.split(",").map((f) => f.trim()) : [];
+  const featureList =property.features ? property.features.split(",").map((f: string) => f.trim()) : [];
   
   // Parse landmarks string "Landmark:Time,Landmark2:Time"
   const landmarkList = property.landmarks
