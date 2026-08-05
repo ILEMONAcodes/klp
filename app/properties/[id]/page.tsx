@@ -14,17 +14,30 @@ export default async function PropertyDetailPage({
 
   if (!property) return notFound();
 
-  const isLand = property.type.toLowerCase() === "land";
-  const imageUrls = property.images ? property.images.split(",") : ["/placeholder.jpg"];
-  const featureList = property.features ? property.features.split(",").map((f: string) => f.trim()) : [];
+  const isLand = property.type?.toLowerCase() === "land";
+  const imageUrls: string[] = property.images
+    ? property.images.split(",").map((img: string) => img.trim())
+    : ["/placeholder.jpg"];
+
+  const featureList: string[] = property.features
+    ? property.features.split(",").map((f: string) => f.trim())
+    : [];
 
   // Parse landmarks string "Landmark:Time,Landmark2:Time"
-  const landmarkList = property.landmarks
+  const landmarkList: { name: string; value: string }[] = property.landmarks
     ? property.landmarks.split(",").map((item: string) => {
         const [name, value] = item.split(":");
-        return { name: name?.trim(), value: value?.trim() };
+        return {
+          name: name ? name.trim() : "Landmark",
+          value: value ? value.trim() : "",
+        };
       })
     : [];
+
+  // Safe number conversions for Prisma Decimal/Float types
+  const formattedPrice = Number(property.price).toLocaleString("en-NG");
+  const lat = property.latitude ? Number(property.latitude) : null;
+  const lng = property.longitude ? Number(property.longitude) : null;
 
   return (
     <main className="min-h-screen bg-white text-stone-900 pt-24 sm:pt-28 pb-20">
@@ -57,7 +70,7 @@ export default async function PropertyDetailPage({
           <div className="md:text-right space-y-3">
             <p className="text-xs font-bold text-stone-400 uppercase tracking-widest">Selling Price</p>
             <p className="text-3xl sm:text-4xl font-black text-purple-600">
-              ₦{property.price.toLocaleString("en-NG")}
+              ₦{formattedPrice}
             </p>
             <a
               href={`https://wa.me/2340000000000?text=Hello,%20I%20am%20interested%20in%20${encodeURIComponent(property.title)}`}
@@ -70,7 +83,7 @@ export default async function PropertyDetailPage({
           </div>
         </div>
 
-        {/* CONDITIONAL SPEC HIGHLIGHT BAR (BEDS/BATHS/SIZE) */}
+        {/* CONDITIONAL SPEC HIGHLIGHT BAR */}
         <div className="bg-white rounded-2xl p-4 sm:p-6 shadow-sm border border-stone-200/80 flex flex-wrap items-center gap-6 sm:gap-12">
           {!isLand && property.bedrooms && (
             <div>
@@ -98,6 +111,7 @@ export default async function PropertyDetailPage({
           {/* LEFT: GALLERY & DETAILS */}
           <div className="lg:col-span-7 space-y-8">
             <div className="rounded-3xl overflow-hidden border border-stone-200 shadow-md">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={imageUrls[0]}
                 alt={property.title}
@@ -113,12 +127,12 @@ export default async function PropertyDetailPage({
               </p>
             </div>
 
-            {/* FEATURES & AUTOMATION */}
+            {/* FEATURES */}
             {featureList.length > 0 && (
               <div className="bg-white p-6 sm:p-8 rounded-3xl border border-stone-200/80 shadow-sm space-y-4">
                 <h3 className="text-xl font-bold text-stone-900">Key Features & Amenities</h3>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {featureList.map((feat, index) => (
+                  {featureList.map((feat: string, index: number) => (
                     <li key={index} className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-stone-700">
                       <span className="text-purple-600 font-bold">✓</span> {feat}
                     </li>
@@ -138,11 +152,11 @@ export default async function PropertyDetailPage({
               </span>
               <h3 className="text-xl font-bold text-stone-900">Interactive Map</h3>
 
-              {property.latitude && property.longitude ? (
+              {lat && lng ? (
                 <div className="space-y-4">
-                  <DynamicMapDisplay lat={property.latitude} lng={property.longitude} />
+                  <DynamicMapDisplay lat={lat} lng={lng} />
                   <a
-                    href={`https://www.google.com/maps?q=${property.latitude},${property.longitude}`}
+                    href={`https://www.google.com/maps?q=${lat},${lng}`}
                     target="_blank"
                     rel="noreferrer"
                     className="block text-center py-3 bg-stone-100 hover:bg-stone-200 text-purple-950 text-xs font-bold rounded-xl transition-all"
@@ -162,12 +176,14 @@ export default async function PropertyDetailPage({
               <div className="bg-white p-6 rounded-3xl border border-stone-200/80 shadow-sm space-y-4">
                 <h3 className="text-lg font-bold text-stone-900">Nearest Landmarks & Routes</h3>
                 <div className="space-y-3">
-                  {landmarkList.map((lm, idx) => (
+                  {landmarkList.map((lm: { name: string; value: string }, idx: number) => (
                     <div key={idx} className="flex items-center justify-between p-3 bg-stone-50 rounded-xl text-xs font-medium">
                       <span className="text-stone-700 font-semibold">• {lm.name}</span>
-                      <span className="px-3 py-1 bg-purple-100 text-purple-950 rounded-full font-bold text-[11px]">
-                        {lm.value}
-                      </span>
+                      {lm.value && (
+                        <span className="px-3 py-1 bg-purple-100 text-purple-950 rounded-full font-bold text-[11px]">
+                          {lm.value}
+                        </span>
+                      )}
                     </div>
                   ))}
                 </div>
@@ -181,7 +197,7 @@ export default async function PropertyDetailPage({
                 Speak directly with a Kayceelaw Properties senior real estate advisor today.
               </p>
               <a
-                href={`tel:+2340000000000`}
+                href="tel:+2340000000000"
                 className="block text-center py-3 bg-white hover:bg-gray-100 text-purple-950 font-extrabold text-xs rounded-xl shadow transition-all"
               >
                 Call Real Estate Advisor
