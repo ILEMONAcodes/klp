@@ -24,7 +24,7 @@ export default async function AdminInquiriesPage() {
       {/* INQUIRIES LIST */}
       {inquiries.length > 0 ? (
         <div className="grid grid-cols-1 gap-4">
-          {inquiries.map((inquiry) => (
+          {inquiries.map((inquiry: any) => (
             <div
               key={inquiry.id}
               className="bg-white p-6 rounded-3xl border border-stone-200/80 shadow-sm space-y-4 hover:border-purple-200 transition-colors"
