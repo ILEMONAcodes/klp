@@ -51,18 +51,18 @@ export default function AboutSection() {
     <section id="about" className="relative bg-white text-stone-900 py-10 sm:py-16 px-4 sm:px-6 lg:px-12 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         
-        {/* MAIN 2-COLUMN LAYOUT */}
-        <div className=" flex gap-6">
+        {/* RESPONSIVE LAYOUT WRAPPER: Vertical on mobile, side-by-side on lg screens */}
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
           
-          {/* LEFT COLUMN: COMPACT MOBILE HEIGHT VIDEO BOX */}
+          {/* LEFT COLUMN: VIDEO BOX (Sits on top on mobile view) */}
           <motion.div
             initial={{ opacity: 0, scale: 0.96, y: 40 }}
             whileInView={{ opacity: 1, scale: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.9, ease: [0.215, 0.61, 0.355, 1] }}
-            className="lg:col-span-5 w-full max-h-[80dvh]  relative"
+            className="w-full lg:w-1/2 shrink-0"
           >
-            <div className="relative w-full h-full rounded-tr-[60px] sm:rounded-tr-[100px] rounded-bl-[20px] sm:rounded-bl-[30px] rounded-tl-[16px] rounded-br-[16px] overflow-hidden shadow-xl">
+            <div className="relative w-full h-64 sm:h-80 md:h-[400px] lg:h-[550px] rounded-tr-[40px] sm:rounded-tr-[80px] rounded-bl-[20px] sm:rounded-bl-[30px] rounded-tl-[16px] rounded-br-[16px] overflow-hidden shadow-xl">
               <video
                 autoPlay
                 loop
@@ -77,10 +77,10 @@ export default function AboutSection() {
           </motion.div>
 
           {/* RIGHT COLUMN: HEADERS, TEXT, STATS & CATALOG CTA */}
-          <div className=" flex flex-col justify-between ">
+          <div className="w-full lg:w-1/2 flex flex-col justify-between space-y-6">
             
             {/* Headers & Narrative */}
-            <div className="space-y-2">
+            <div className="space-y-3">
               <motion.div
                 initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -91,8 +91,8 @@ export default function AboutSection() {
                   About Us
                 </span>
 
-                <h2 className="text-xl sm:text-4xl font-extrabold leading-snug text-stone-900 tracking-tight">
-                  We are Building the Future of Nigeria's Real Estate
+                <h2 className="text-xl sm:text-3xl lg:text-4xl font-extrabold leading-snug text-stone-900 tracking-tight">
+                  We are Building the Future of Nigeria&apos;s Real Estate
                 </h2>
               </motion.div>
 
@@ -125,7 +125,7 @@ export default function AboutSection() {
             </div>
 
             {/* 2x2 Icon Stats Grid */}
-            <div className="grid grid-cols-2 gap-4 border-t pt-2 border-stone-300/60">
+            <div className="grid grid-cols-2 gap-4 border-t pt-4 border-stone-300/60">
               {stats.map((stat, index) => (
                 <motion.div
                   key={index}
@@ -139,7 +139,7 @@ export default function AboutSection() {
                     {stat.icon}
                   </div>
                   <div>
-                    <div className="text-xl sm:text-3xl font-extrabold text-purple-600 tracking-tight">
+                    <div className="text-lg sm:text-2xl lg:text-3xl font-extrabold text-purple-600 tracking-tight">
                       <AnimatedCounter
                         value={stat.value}
                         suffix={stat.suffix}
@@ -154,7 +154,7 @@ export default function AboutSection() {
               ))}
             </div>
 
-            {/* Project Catalog Section Only */}
+            {/* Project Catalog Section */}
             <motion.div
               initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -169,7 +169,7 @@ export default function AboutSection() {
                 Explore our portfolio through our collection of estate guides.
               </p>
               <motion.a
-                href="/catalog.pdf" // Update to your catalog file path or link
+                href="/catalog.pdf"
                 target="_blank"
                 whileTap={{ scale: 0.95 }}
                 className="inline-flex items-center justify-center px-6 py-2.5 bg-stone-900 hover:bg-stone-800 active:bg-stone-950 text-white font-semibold rounded-full transition-all duration-200 text-xs shadow-sm"
