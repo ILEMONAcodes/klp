@@ -1,6 +1,8 @@
 import { Mail, Phone, Trash2, Calendar, User } from "lucide-react";
 import { getInquiries, deleteInquiry } from "@/app/actions/inquiries";
 
+export const dynamic = "force-dynamic";
+
 export default async function AdminInquiriesPage() {
   const inquiries = await getInquiries();
 

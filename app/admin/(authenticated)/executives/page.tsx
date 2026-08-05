@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Plus, Trash2, UserCheck, Mail, Phone, User } from "lucide-react";
 import { getExecutives, deleteExecutive } from "@/app/actions/executives";
+export const dynamic = "force-dynamic";
 
 export default async function AdminExecutivesPage() {
   const executives = await getExecutives();

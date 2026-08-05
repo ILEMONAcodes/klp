@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Plus, Trash2, Edit3, MapPin, Home } from "lucide-react";
 import { getProperties, deleteProperty } from "@/app/actions/properties";
+export const dynamic = "force-dynamic";
 
 export default async function AdminPropertiesPage() {
   const properties = await getProperties();
